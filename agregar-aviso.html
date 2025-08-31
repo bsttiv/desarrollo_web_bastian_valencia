@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar aviso</title>
+</head>
+<body>
+    <div class="caja-form">
+        <h3>Información de ubicación</h3>
+        <form name="myForm" method="post" enctype="multipart/form-data">
+            <label for="select-region">Región</label>
+            <select name="select-region" id="select-region"></select>
+            <label for="select-comuna">Comuna</label>
+            <select name="select-comuna" id="select-comuna"></select>
+            <label for="sector">Sector</label>
+            <input type="text" maxlength="100" id="sector" placeholder="Introduce el sector (opcional)">
+            <hr>
+            <h3>Información de contacto</h3>
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" required minlength="3" maxlength="200" placeholder="Introduce tu nombre">
+            <label for="email">Email</label>
+            <input type="text" id="email" required maxlength="100" placeholder="Introduce tu email">
+            <label for="tel">Número de teléfono</label>
+            <input type="tel" name="tel" id="tel" placeholder="Introduce tu número de teléfono (opcional)">
+            <fieldset>
+                <legend>Contactar por</legend>
+                <div class="checkbox-field">
+                    <label for="whatsapp">Whatsapp</label>
+                    <input type="checkbox" name="whatsapp" id="contact-opt-1">
+                    <input type="text" style="display: none;" id="whatsapp-input-text" minlength="4" maxlength="50">
+                </div>
+                <div class="checkbox-field">
+                    <label for="tiktok">TikTok</label>
+                    <input type="checkbox" name="tiktok" id="contact-opt-2">
+                    <input type="text" style="display: none;" id="tiktok-input-text" minlength="4" maxlength="50">
+                </div>
+                <div class="checkbox-field">
+                    <label for="telegram">Telegram</label>
+                    <input type="checkbox" name="telegram" id="contact-opt-3">
+                    <input type="text" style="display: none;" id="telegram-input-text" minlength="4" maxlength="50">
+                </div>
+                <div class="checkbox-field">
+                    <label for="x">X</label>
+                    <input type="checkbox" name="x" id="contact-opt-4">
+                    <input type="text" style="display: none;" id="x-input-text" minlength="4" maxlength="50">
+                </div>
+                <div class="checkbox-field">
+                    <label for="instagram">Instagram</label>
+                    <input type="checkbox" name="instagram" id="contact-opt-5">
+                    <input type="text" style="display: none;" id="instagram-input-text" minlength="4" maxlength="50">
+                </div>
+                <div class="checkbox-field">
+                    <label for="otra">Otra</label>
+                    <input type="checkbox" name="otra" id="contact-opt-6">
+                    <input type="text" style="display: none;" id="otra-input-text" minlength="4" maxlength="50">
+                </div>
+            </fieldset>
+            <hr>
+            <h3>Información de mascota</h3>
+            <fieldset>
+                <legend>Selecciona un tipo de mascota</legend>
+                <label for="perro">Perro</label>
+                <input type="radio" name="tipo" id="perro" required>
+                <label for="gato">Gato</label>
+                <input type="radio" name="tipo" id="gato">
+            </fieldset>
+            <label for="cantidad">Cantidad</label>
+            <input type="number" name="cantidad" id="cantidad" required>
+            <label for="edad">Edad</label>
+            <input type="number" name="cantidad" id="cantidad" required>
+            <fieldset>
+                <legend>Unidad de medida de edad</legend>
+                <label for="perro">Meses</label>
+                <input type="radio" name="medida" id="perro" required>
+                <label for="gato">Años</label>
+                <input type="radio" name="medida" id="gato">
+            </fieldset>
+            <label for="fecha">Fecha entrega</label>
+            <input type="datetime-local" name="fecha" id="fecha" required >
+            <label for="desc">Descripción</label>
+            <input type="text" name="desc" placeholder="Descripción (opcional)">
+            <label for="foto">Foto</label>
+            <input type="file" name="foto" id="foto" required>
+        </form>
+    </div>
+</body>
+</html>
