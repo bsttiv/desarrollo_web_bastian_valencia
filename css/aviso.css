@@ -1,0 +1,24 @@
+h3{
+    color: #D9B5AD;
+    font-size: 20px;
+    text-align: left;
+}
+
+p{
+    color: #fdfdfd;
+}
+
+#caja-texto{
+    display: flex;
+}
+
+.bloque{
+    margin: 30px;
+    padding: 10px;
+}
+
+img{
+    width: 320px;
+    height: 240px;
+    margin: 0 30px;
+}

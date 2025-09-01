@@ -20,7 +20,7 @@ function validateEmail(email){
 }
 
 function validatePhone(phone){
-    if (!phone) return false
+    if (!phone) return true
     // La expresion regular tambien testea el largo del numero
     let re = /^\+\d{3}\.\d{8}$/
     return re.test(phone)
@@ -198,6 +198,12 @@ function validateForm(){
             form.style.display = "block";
             validationBox.hidden = true;
         });
+
+        submitButton.onclick = () => {
+            submitButton.hidden = true
+            msgTitle.innerText = "Hemos recibido la información de adopción, muchas gracias y suerte!"
+            backButton.onclick = () => window.location = "/"
+        }
 
         validationListElem.appendChild(submitButton);
         validationListElem.appendChild(backButton);
