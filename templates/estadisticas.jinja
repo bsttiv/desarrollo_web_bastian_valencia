@@ -1,0 +1,14 @@
+{% extends "base.jinja" %}
+{% block title %}
+Estadísticas
+{% endblock title %}
+{% block content %}
+<img src="{{ url_for('static', filename='img/grafico_linea_fechas.png') }}" alt="">
+<img src="{{ url_for('static', filename='img/grafico_torta.png') }}" alt="">
+<img src="{{ url_for('static', filename='img/grafico_barras.png') }}" alt="">
+<div id="links">
+    <a href="/">Portada</a>
+    <a href="/aviso">Agregar Aviso</a>
+    <a href="/listado">Lista avisos</a>
+</div>
+{% endblock content %}

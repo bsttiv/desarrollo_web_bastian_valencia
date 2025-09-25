@@ -1,0 +1,45 @@
+#caja-bienvenida{
+    width: 50%;
+    height: 600px;
+    background-color: #D9B5AD;
+    margin: 0 auto;
+    border-radius: 5px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+#opciones{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+a{
+    font-size: 30px;
+    background-color: #261E17;
+    color: #A69180;
+    padding: 20px;
+    width: 20%;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+table{
+    background-color: #D9B5AD;
+    margin: 10px auto;
+    width: 60%;
+    border: 2px solid;
+    padding: 20px;
+    border-spacing: 10px;
+    text-align: center;
+}
+
+td{
+    border: 1px solid;
+    border-radius: 5px;
+}
+
+img{
+    width: 20%;
+}

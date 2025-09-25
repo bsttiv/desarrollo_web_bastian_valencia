@@ -1,0 +1,28 @@
+table{
+    background-color: #D9B5AD;
+    margin: 10px auto;
+    width: 60%;
+    border: 2px solid;
+    padding: 20px;
+    border-spacing: 10px;
+    text-align: center;
+}
+
+td{
+    border: 1px solid;
+    border-radius: 5px;
+}
+
+tr{
+    cursor: pointer;
+}
+
+#pagina-block{
+    display: flex;
+    justify-content: center;
+}
+
+#pagina-block label{
+    color: #D9B5AD;
+    margin-right: 30px;
+}

@@ -1,0 +1,48 @@
+h3{
+    color: #D9B5AD;
+    font-size: 20px;
+    text-align: left;
+}
+
+p{
+    color: #fdfdfd;
+}
+
+#caja-texto{
+    display: flex;
+}
+
+.bloque{
+    margin: 30px;
+    padding: 10px;
+}
+
+img{
+    width: 320px;
+    height: 240px;
+    margin: 0 30px;
+    cursor: pointer;
+}
+
+.hidden{
+    opacity: 20%;
+    pointer-events: none;
+}
+
+#giant{
+    opacity: 100%;
+    width: 800px;
+    height: 600px;
+    position: absolute;
+    top: 20%;
+    left: 25%;
+}
+
+#equis{
+    position: absolute;
+    color: white;
+    font-size: 40px;
+    top: 15%;
+    left: 69%;
+    cursor: pointer;
+}

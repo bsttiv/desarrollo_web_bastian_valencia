@@ -1,0 +1,41 @@
+{% extends "base.jinja" %}
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+{% endblock css %}
+{% block title %}
+Bienvenida
+{% endblock title %}
+{% block content %}
+<div id="caja-bienvenida">
+    <h1>Bienvenidos!</h1>
+    <h3>El mejor servicio de adopción de la via láctea</h3>
+    <p>Selecciona una de las siguientes opciones: </p>
+    <div id="opciones">
+        <a href="/aviso">Agregar aviso</a>
+        <a href="/listado">Ver listado de avisos</a>
+        <a href="/estadisticas">Estadísticas</a>
+    </div>
+</div>
+{% if ultimos %}
+<div id="caja-tabla">
+    <table>
+        <tr>
+            <th>Fecha publicación</th>
+            <th>Comuna</th>
+            <th>Sector</th>
+            <th>Cantidad Tipo Edad</th>
+            <th>Foto</th>
+        </tr>
+        {% for dict_item in ultimos %}
+        <tr>
+            <td>{{dict_item["fecha"]}}</td>
+            <td>{{dict_item["comuna"]}}</td>
+            <td>{{dict_item["sector"]}}</td>
+            <td>{{dict_item["mascota"]}}</td>
+            <td><img src="{{ dict_item["foto"] }}" alt=""></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endif %}
+{% endblock content %}

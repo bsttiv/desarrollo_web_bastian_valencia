@@ -1,0 +1,60 @@
+{% extends "base.jinja" %}
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/lista-avisos.css') }}">
+{% endblock css %}
+{% block title %}
+Lista de avisos
+{% endblock title %}
+{% block content %}
+
+{% if lista %}
+<div id="caja-tabla">
+    <table>
+        <tr>
+            <th>Fecha publicación</th>
+            <th>Fecha Entrega</th>
+            <th>Comuna</th>
+            <th>Sector</th>
+            <th>Cantidad Tipo Edad</th>
+            <th>Nombre contacto</th>
+            <th>Total fotos</th>
+        </tr>
+        {% for dict_item in lista %}
+        
+            <tr id={{dict_item["id"]}} class="aviso">
+                <td>{{dict_item["fecha_ingreso"]}}</td>
+                <td>{{dict_item["fecha_entrega"]}}</td>
+                <td>{{dict_item["comuna"]}}</td>
+                <td>{{dict_item["sector"]}}</td>
+                <td>{{dict_item["mascota"]}}</td>
+                <td>{{dict_item["contacto"]}}</td>
+                <td>{{dict_item["numero_fotos"]}}</td>
+            </tr>
+        {% endfor %}
+        {% if paginas %}
+            <div id="pagina-block">
+                <label for="select-page">Seleccionar pagina</label>
+                <select name="select-page" id="select-page">
+                    {% for pagina in paginas %}
+                        {% if pagina == actual %}
+                            <option value={{pagina}} selected>{{pagina}}</option>
+                        {% else %}
+                            <option value={{pagina}}>{{pagina}}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+        {% endif %}
+    </table>
+</div>
+{% endif %}
+
+<div id="links">
+    <a href="/">Portada</a>
+    <a href="/aviso">Agregar Aviso</a>
+    <a href="/estadisticas">Estadísticas</a>
+</div>
+{% endblock content %}
+{% block javascript %}
+<script src="{{ url_for('static', filename='js/listaLinks.js') }}"></script>
+{% endblock javascript %}

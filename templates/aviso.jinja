@@ -1,0 +1,60 @@
+{% extends "base.jinja" %}
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/aviso.css') }}">
+{% endblock css %}
+{% block title %}
+Aviso {{ aviso_id }}
+{% endblock title %}
+{% block content %}
+<div id="caja-info">
+    <div id="caja-texto">
+        <div class="bloque">
+            <h3>Fecha publicación</h3>
+            <p>{{fecha_ingreso}}</p>
+        </div>
+
+        <div class="bloque">
+            <h3>Fecha entrega</h3>
+            <p>{{fecha_entrega}}</p>
+        </div>
+        <div class="bloque">
+            <h3>Comuna</h3>
+            <p>{{comuna}}</p>
+        </div>
+        <div class="bloque">
+            <h3>Sector</h3>
+            <p>{{sector}}</p>
+        </div>
+        <div class="bloque">
+            <h3>Cantidad</h3>
+            <p>{{cantidad}}</p>
+        </div>
+        <div class="bloque">
+            <h3>Tipo</h3>
+            <p>{{tipo}}</p>
+        </div>
+        <div class="bloque">
+            <h3>Edad</h3>
+            <p>{{edad}}</p>
+        </div>
+        <div class="bloque">
+            <h3>Nombre contacto</h3>
+            <p>{{nombre}}</p>
+        </div>
+    </div>
+    <div id="caja-fotos">
+        {% for foto in fotos %}
+            <img src="{{ url_for('static', filename=foto) }}" alt="" class="imagen">
+        {% endfor %}
+    </div>
+</div>
+<div id="links">
+    <a href="/">Portada</a>
+    <a href="/aviso">Agregar Aviso</a>
+    <a href="/listado">Lista avisos</a>
+    <a href="/estadisticas">Estadísticas</a>
+</div>
+{% endblock content %}
+{% block javascript %}
+<script src="{{ url_for('static', filename='js/fotos.js') }}"></script>
+{% endblock javascript %}
