@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, desc as descend
 from sqlalchemy.orm import sessionmaker, declarative_base, relationship
 
 DB_NAME = "tarea2"
@@ -100,7 +100,7 @@ def crear_contacto(nombre, identificador, aviso_id):
 def ultimos_lista():
     from .aviso_adopcion import AvisoAdopcion
     session = SessionLocal()
-    ultimos = session.query(AvisoAdopcion).limit(5).all()
+    ultimos = session.query(AvisoAdopcion).order_by(descend(AvisoAdopcion.id)).limit(5).all()
     session.close()
     return ultimos
 

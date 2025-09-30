@@ -9,6 +9,20 @@ Lista de avisos
 
 {% if lista %}
 <div id="caja-tabla">
+    {% if paginas %}
+    <div id="pagina-block">
+        <label for="select-page">Seleccionar pagina</label>
+        <select name="select-page" id="select-page">
+            {% for pagina in paginas %}
+            {% if pagina == actual %}
+            <option value={{pagina}} selected>{{pagina}}</option>
+            {% else %}
+            <option value={{pagina}}>{{pagina}}</option>
+            {% endif %}
+            {% endfor %}
+        </select>
+    </div>
+    {% endif %}
     <table>
         <tr>
             <th>Fecha publicación</th>
@@ -20,31 +34,17 @@ Lista de avisos
             <th>Total fotos</th>
         </tr>
         {% for dict_item in lista %}
-        
-            <tr id={{dict_item["id"]}} class="aviso">
-                <td>{{dict_item["fecha_ingreso"]}}</td>
-                <td>{{dict_item["fecha_entrega"]}}</td>
-                <td>{{dict_item["comuna"]}}</td>
-                <td>{{dict_item["sector"]}}</td>
-                <td>{{dict_item["mascota"]}}</td>
-                <td>{{dict_item["contacto"]}}</td>
-                <td>{{dict_item["numero_fotos"]}}</td>
-            </tr>
+
+        <tr id={{dict_item["id"]}} class="aviso">
+            <td>{{dict_item["fecha_ingreso"]}}</td>
+            <td>{{dict_item["fecha_entrega"]}}</td>
+            <td>{{dict_item["comuna"]}}</td>
+            <td>{{dict_item["sector"]}}</td>
+            <td>{{dict_item["mascota"]}}</td>
+            <td>{{dict_item["contacto"]}}</td>
+            <td>{{dict_item["numero_fotos"]}}</td>
+        </tr>
         {% endfor %}
-        {% if paginas %}
-            <div id="pagina-block">
-                <label for="select-page">Seleccionar pagina</label>
-                <select name="select-page" id="select-page">
-                    {% for pagina in paginas %}
-                        {% if pagina == actual %}
-                            <option value={{pagina}} selected>{{pagina}}</option>
-                        {% else %}
-                            <option value={{pagina}}>{{pagina}}</option>
-                        {% endif %}
-                    {% endfor %}
-                </select>
-            </div>
-        {% endif %}
     </table>
 </div>
 {% endif %}

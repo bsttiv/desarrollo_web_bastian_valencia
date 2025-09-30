@@ -54,7 +54,7 @@ def aviso():
         edad = request.form.get("edad")
         medida = request.form.get("medida")
         fecha = request.form.get("fecha")
-        celular = request.form.get("telefono")
+        celular = request.form.get("tel")
         desc = request.form.get("desc")
         sector = request.form.get("sector")
         errores = []
