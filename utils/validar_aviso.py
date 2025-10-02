@@ -30,7 +30,7 @@ def validarRadios(r1,r2):
 def validarNumero(numero):
     if numero is None:
         return False
-    return numero >= 1
+    return numero >= 1 and type(numero) is int
 
 def validarFecha(fecha):
     if fecha is None:

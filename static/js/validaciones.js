@@ -45,7 +45,7 @@ function validateRadios(r1, r2){
 
 function validateNumber(number){
     if (!number) return false
-    return number >= 1
+    return number >= 1 && Number.isInteger(number)
 }
 
 function validateDate(date, min){
@@ -136,10 +136,10 @@ function validateForm(){
     if (!validateRadios(perro, gato)){
         setInvalidInput("Tipo de mascota");
     }
-    if (!validateNumber(parseInt(cantidad.value))){
+    if (!validateNumber(Number(cantidad.value))){
         setInvalidInput("Cantidad");
     }
-    if (!validateNumber(parseInt(edad.value))){
+    if (!validateNumber(Number(cantidad.value))){
         setInvalidInput("Edad");
     }
     if (!validateRadios(meses, años)){
