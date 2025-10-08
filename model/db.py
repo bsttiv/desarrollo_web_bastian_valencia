@@ -33,6 +33,12 @@ def get_region_by_name(name):
     region = session.query(Region).filter_by(nombre=name).first()
     return region
 
+def get_region_by_id(id):
+    from .region import Region
+    session = SessionLocal()
+    region = session.query(Region).filter_by(id=id).first()
+    return region
+
 def nombre_comuna_por_id(comuna_id):
     from .comuna import Comuna
     session = SessionLocal()
@@ -145,3 +151,10 @@ def obtener_aviso(aviso_id):
     aviso = session.query(AvisoAdopcion).filter_by(id=aviso_id).first()
     session.close()
     return aviso
+
+def obtener_contactos(aviso_id):
+    from .contactar_por import ContactarPor
+    session = SessionLocal()
+    contactos = session.query(ContactarPor).filter_by(id=aviso_id).all()
+    session.close()
+    return contactos

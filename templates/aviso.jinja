@@ -22,6 +22,10 @@ Aviso {{ aviso_id }}
             <p>{{comuna}}</p>
         </div>
         <div class="bloque">
+            <h3>Región</h3>
+            <p>{{region}}</p>
+        </div>
+        <div class="bloque">
             <h3>Sector</h3>
             <p>{{sector}}</p>
         </div>
@@ -41,6 +45,30 @@ Aviso {{ aviso_id }}
             <h3>Nombre contacto</h3>
             <p>{{nombre}}</p>
         </div>
+        <div class="bloque">
+            <h3>Email</h3>
+            <p>{{email}}</p>
+        </div>
+        {% if telefono %}
+            <div class="bloque">
+                <h3>Teléfono</h3>
+                <p>{{telefono}}</p>
+            </div>
+        {% endif %}
+        {% if contactos %}
+            {% for contacto in contactos %}
+                <div class="bloque">
+                    <h3>{{contacto.nombre.name}}</h3>
+                    <p>{{contacto.identificador}}</p>
+                </div>
+            {% endfor %}
+        {% endif %}
+        {% if desc %}
+            <div class="bloque">
+                <h3>Descripcion</h3>
+                <p>{{desc}}</p>
+            </div>
+        {% endif %}
     </div>
     <div id="caja-fotos">
         {% for foto in fotos %}

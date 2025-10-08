@@ -137,13 +137,20 @@ def listado_id_aviso(id_aviso):
     if aviso is None:
         return redirect(url_for("listado"))
     comuna = db.nombre_comuna_por_id(aviso.comuna_id)
+    region = db.get_region_by_id(comuna.region_id)
     medida = "año(s)" if aviso.unidad_medida == "a" else "mes(es)"
     fotos = map(lambda ft: f"uploads/{ft.nombre_archivo}", db.obtener_fotos(id_aviso))
+    contactos = db.obtener_contactos(id_aviso)
     data = {
         "aviso_id": id_aviso,
         "fecha_ingreso": datetime.strftime(aviso.fecha_ingreso, "%d/%m/%Y %H:%M"),
         "fecha_entrega": datetime.strftime(aviso.fecha_entrega, "%d/%m/%Y %H:%M"),
         "comuna": comuna.nombre,
+        "email": aviso.email,
+        "telefono": aviso.celular,
+        "contactos": contactos,
+        "region": region.nombre,
+        "desc": aviso.descripcion,
         "sector": aviso.sector if aviso.sector != "" else "Sin datos",
         "cantidad": aviso.cantidad,
         "tipo": aviso.tipo.name,

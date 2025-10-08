@@ -10,6 +10,7 @@ p{
 
 #caja-texto{
     display: flex;
+    flex-wrap: wrap;
 }
 
 .bloque{
