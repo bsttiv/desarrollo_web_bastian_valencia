@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, desc as descend
+from sqlalchemy import create_engine, desc as descend, extract, func
 from sqlalchemy.orm import sessionmaker, declarative_base, relationship
 
 DB_NAME = "tarea2"
@@ -158,3 +158,52 @@ def obtener_contactos(aviso_id):
     contactos = session.query(ContactarPor).filter_by(id=aviso_id).all()
     session.close()
     return contactos
+
+def numero_avisos_tipo(tipo):
+    from .aviso_adopcion import AvisoAdopcion
+    session = SessionLocal()
+    num = session.query(AvisoAdopcion).filter_by(tipo=tipo).count()
+    session.close()
+    return num
+
+def numero_avisos_mes_tipo(mes, tipo):
+    from .aviso_adopcion import AvisoAdopcion
+    from datetime import datetime
+    año_actual = datetime.now().year
+    session = SessionLocal()
+    num = session.query(AvisoAdopcion).filter_by(tipo=tipo).filter(
+        extract('month', AvisoAdopcion.fecha_ingreso) == mes,
+        extract('year', AvisoAdopcion.fecha_ingreso) == año_actual
+    ).count()
+    session.close()
+    return num
+
+def numero_avisos_mes():
+    from .aviso_adopcion import AvisoAdopcion
+    from datetime import datetime
+    session = SessionLocal()
+    mes_actual = datetime.now().month
+    año_actual = datetime.now().year
+    avisos_del_mes = session.query(extract('day', AvisoAdopcion.fecha_ingreso), extract('month', AvisoAdopcion.fecha_ingreso), extract('year', AvisoAdopcion.fecha_ingreso), func.count(AvisoAdopcion.id)).filter(
+        extract('month', AvisoAdopcion.fecha_ingreso) == mes_actual,
+        extract('year', AvisoAdopcion.fecha_ingreso) == año_actual
+    ).group_by(extract('day', AvisoAdopcion.fecha_ingreso), extract('month', AvisoAdopcion.fecha_ingreso), extract('year', AvisoAdopcion.fecha_ingreso)).all()
+    session.close()
+    return avisos_del_mes
+
+def agregar_comentario(nombre, comentario, aviso_id):
+    from .comentario import Comentario
+    from datetime import datetime
+    now = datetime.now()
+    session = SessionLocal()
+    comentario = Comentario(nombre=nombre, texto=comentario, aviso_id=aviso_id, fecha=now)
+    session.add(comentario)
+    session.commit()
+    session.close()
+
+def obtener_comentarios(aviso_id):
+    from .comentario import Comentario
+    session = SessionLocal()
+    comentarios = session.query(Comentario).filter_by(aviso_id=aviso_id).all()
+    session.close()
+    return comentarios

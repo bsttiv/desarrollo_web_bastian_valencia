@@ -1,14 +1,26 @@
 {% extends "base.jinja" %}
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/estadisticas.css') }}">
+{% endblock css %}
+{% block importscript %}
+<script src="https://code.highcharts.com/highcharts.js"></script>
+{% endblock importscript %}
 {% block title %}
 Estadísticas
 {% endblock title %}
 {% block content %}
-<img src="{{ url_for('static', filename='img/grafico_linea_fechas.png') }}" alt="">
-<img src="{{ url_for('static', filename='img/grafico_torta.png') }}" alt="">
-<img src="{{ url_for('static', filename='img/grafico_barras.png') }}" alt="">
+
+<div id="grafico1" class="grafico"></div>
+<div id="grafico2" class="grafico"></div>
+<div id="grafico3" class="grafico"></div>
+
 <div id="links">
     <a href="/">Portada</a>
     <a href="/aviso">Agregar Aviso</a>
     <a href="/listado">Lista avisos</a>
 </div>
 {% endblock content %}
+
+{% block javascript %}
+<script src="{{ url_for('static', filename='js/estadisticas.js') }}"></script>
+{% endblock javascript %}

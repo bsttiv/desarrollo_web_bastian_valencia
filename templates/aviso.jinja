@@ -9,6 +9,10 @@ Aviso {{ aviso_id }}
 <div id="caja-info">
     <div id="caja-texto">
         <div class="bloque">
+            <h3>ID Aviso</h3>
+            <p id="aviso_id">{{aviso_id}}</p>
+        </div>
+        <div class="bloque">
             <h3>Fecha publicación</h3>
             <p>{{fecha_ingreso}}</p>
         </div>
@@ -75,6 +79,19 @@ Aviso {{ aviso_id }}
             <img src="{{ url_for('static', filename=foto) }}" alt="" class="imagen">
         {% endfor %}
     </div>
+    <div id="añadir-comentario">
+        <h1>Añadir comentario</h1>
+        <h3 hidden id="err"></h3>
+        <form id="formComentario" name="formComentario" action="javascript:void(0);">
+            <input type="text" minlength="3" maxlength="80" id="nombre" name="nombre" placeholder="Introduce tu nombre">
+            <textarea id="comentario" name="comentario" rows="4" cols="50" placeholder="Comentario" minlength="5"></textarea>
+            <button id="agregar">Agregar comentario</button>
+        </form>
+    </div>
+    <div id="caja-comentarios">
+        <h1>Comentarios</h1>
+        <h3 hidden id="err-com"></h3>
+    </div>
 </div>
 <div id="links">
     <a href="/">Portada</a>
@@ -85,4 +102,5 @@ Aviso {{ aviso_id }}
 {% endblock content %}
 {% block javascript %}
 <script src="{{ url_for('static', filename='js/fotos.js') }}"></script>
+<script src="{{ url_for('static', filename='js/comentario.js') }}"></script>
 {% endblock javascript %}

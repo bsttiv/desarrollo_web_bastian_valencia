@@ -7,7 +7,7 @@ from .aviso_adopcion import AvisoAdopcion
 class TipoContacto(enum.Enum):
     whatsapp = 1
     telegram = 2
-    X = 3
+    x = 3
     instagram = 4
     tiktok = 5
     otra = 6

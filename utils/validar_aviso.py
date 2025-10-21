@@ -14,7 +14,8 @@ def validarEmail(email):
     return bool(re.search(r"^[\w.]+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$", email))
 
 def validarTelefono(telefono):
-    return telefono is None or bool(re.search(r"^\+\d{3}\.\d{8}$", telefono))
+    print(telefono)
+    return telefono is None or len(telefono) == 0 or bool(re.search(r"^\+\d{3}\.\d{8}$", telefono))
 
 def validarCheckbox(checkbox_status, checkbox_value):
     if checkbox_value is None or checkbox_status is None:

@@ -47,3 +47,36 @@ img{
     left: 69%;
     cursor: pointer;
 }
+
+#añadir-comentario{
+    margin: 20px;
+}
+
+#caja-comentarios{
+    margin: 20px;
+}
+
+#formComentario{
+    display: flex;
+    flex-direction: column;
+    width: min-content;
+}
+
+h1{
+    color: #fdfdfd;
+}
+
+.comentario{
+    padding: 10px;
+    background-color: #261E17;
+    margin: 5px;
+}
+
+.nombre-comentario{
+    font-size: 30px;
+    color: #fdfdfd;
+}
+
+.fecha-comentario{
+    font-size: 17px;
+}

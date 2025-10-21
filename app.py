@@ -1,12 +1,14 @@
 import os
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, jsonify
 import model.db as db
 import json
 import hashlib
 import filetype
 from werkzeug.utils import secure_filename
-from utils import validar_archivos, validar_aviso
+from utils import validar_archivos, validar_aviso, validar_comentario
 from datetime import datetime
+
+MESES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"]
 
 app = Flask("Tarea2")
 app.secret_key = "Cl4v3s3cr3t4_t4r34_2_bsttiv"
@@ -191,6 +193,62 @@ def listado():
 @app.route("/estadisticas/", methods=["GET"])
 def estadisticas():
     return render_template("estadisticas.jinja")
+
+@app.route("/estadisticas/avisos_por_dia/", methods=["GET"])
+def avisos_por_dia():
+    avisos = db.numero_avisos_mes()
+    lista = []
+    for aviso in avisos:
+        lista.append({"fecha": f"{aviso[0]}-{aviso[1]}-{aviso[2]}", "num": aviso[3]})
+    return jsonify({"avisos": lista})
+
+@app.route("/estadisticas/avisos_por_tipo/", methods=["GET"])
+def avisos_por_tipo():
+    from model.aviso_adopcion import TipoAnimal
+    num_perro = db.numero_avisos_tipo(TipoAnimal.perro)
+    num_gato = db.numero_avisos_tipo(TipoAnimal.gato)
+    return jsonify(
+        {"perro": num_perro, "gato": num_gato}
+    )
+
+@app.route("/estadisticas/avisos_por_meses/", methods=["GET"])
+def avisos_por_meses():
+    from model.aviso_adopcion import TipoAnimal
+    lista = []
+    for (i, mes) in enumerate(MESES):
+        avisos_perro = db.numero_avisos_mes_tipo(i+1, TipoAnimal.perro)
+        avisos_gato = db.numero_avisos_mes_tipo(i+1, TipoAnimal.gato)
+        lista.append({"mes": mes, "perro": avisos_perro, "gato": avisos_gato})
+    return jsonify({"avisos": lista})
+
+@app.route("/comentarios/<int:id_aviso>", methods = ["GET", "POST"])
+def comentarios(id_aviso):
+    if request.method == "GET":
+        try:
+            comentarios = db.obtener_comentarios(id_aviso)
+            lista = []
+            for comentario in comentarios:
+                lista.append({"nombre": comentario.nombre, "texto": comentario.texto, "fecha": comentario.fecha})
+            return jsonify(
+                {"comentarios": lista}
+            )
+        except Exception:
+            return jsonify({"error": "Error consultando la base de datos"})
+    else:
+        data = request.get_json()
+        try:
+            nombre = data['nombre']
+            comentario = data['comentario']
+        except Exception:
+            return jsonify({"error", "El cuerpo de la peticion no es valido."})
+        if not validar_comentario.validar_comentario(nombre, comentario):
+            return jsonify(
+                {"error": "El comentario ingresado no es correcto. Por favor revise que el nombre y el comentario cumplan los requisitos."}
+            )
+        db.agregar_comentario(nombre, comentario, id_aviso)
+        return jsonify(
+            {"msg": "Comentario agregado exitosamente"}
+        )
 
 def inicializar_comunas():
     regiones_comunas = []
