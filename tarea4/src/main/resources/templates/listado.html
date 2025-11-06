@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{base :: layout(
+        title = ~{::title},
+        css = ~{::css},
+        content = ~{::content},
+        javascript = ~{::javascript}
+      )}">
+
+<th:block th:fragment="css">
+    <link rel="stylesheet" th:href="@{/css/listado.css}">
+</th:block>
+
+<title th:fragment="title">Lista de avisos</title>
+
+<div th:fragment="content">
+    <div id="pagina-block" th:if="${paginas != null and paginas.length > 0}">
+        <label for="select-page">Seleccionar pagina</label>
+        <select name="select-page" id="select-page">
+            <option th:each="pagina : ${paginas}"
+                    th:value="${pagina}"
+                    th:text="${pagina}"
+                    th:selected="${pagina == actual}">
+            </option>
+        </select>
+    </div>
+    <table id="tabla">
+        <tr>
+            <th>ID</th>
+            <th>Fecha publicación</th>
+            <th>Sector</th>
+            <th>Cantidad Tipo Edad</th>
+            <th>Comuna</th>
+            <th>Nota</th>
+            <th></th>
+        </tr>
+    </table>
+
+    <div id="links">
+        <a th:href="@{/}">Portada</a>
+        <a th:href="@{/aviso}">Agregar Aviso</a>
+        <a th:href="@{/estadisticas}">Estadísticas</a>
+    </div>
+
+</div>
+
+<th:block th:fragment="javascript">
+    <script th:src="@{/js/listado.js}"></script>
+</th:block>
+
+</html>

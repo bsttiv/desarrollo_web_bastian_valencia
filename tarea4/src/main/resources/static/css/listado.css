@@ -1,0 +1,96 @@
+table{
+    background-color: #D9B5AD;
+    margin: 10px auto;
+    width: 60%;
+    border: 2px solid;
+    padding: 20px;
+    border-spacing: 10px;
+    text-align: center;
+}
+
+td{
+    border: 1px solid;
+    border-radius: 5px;
+}
+
+tr{
+    cursor: pointer;
+}
+
+#pagina-block{
+    display: flex;
+    justify-content: center;
+}
+
+#pagina-block label{
+    color: #D9B5AD;
+    margin-right: 30px;
+}
+
+#modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+}
+
+/* La caja del diálogo (modal) */
+#nota-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1001;
+    min-width: 300px;
+}
+
+.modal-header {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.modal-body label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.modal-body select {
+    width: 100%;
+    padding: 8px;
+    font-size: 1rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.modal-actions {
+    margin-top: 25px;
+    display: flex;
+    justify-content: flex-end; /* Alinea botones a la derecha */
+    gap: 10px; /* Espacio entre botones */
+}
+
+.modal-actions button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.modal-actions .btn-secondary {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+}
+
+.modal-actions .btn-primary {
+    background-color: #007bff;
+    color: white;
+}

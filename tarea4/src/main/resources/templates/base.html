@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:fragment="layout(title, css, content, javascript)">
+<head>
+    <meta charset="UTF-8">
+
+    <title th:replace="${title}">Avisos de adopcion</title>
+
+    <th:block th:replace="${css}"></th:block>
+
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+</head>
+<body>
+
+<div th:replace="${content}">
+</div>
+
+<th:block th:replace="${javascript}"></th:block>
+
+</body>
+</html>
