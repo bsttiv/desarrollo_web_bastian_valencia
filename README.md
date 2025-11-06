@@ -1,4 +1,9 @@
-Consideraciones para la entrega:
+# Tarea 4
 
-- Se asumió que en la lista de avisos recientes, solo se encuentran los de la base de datos. En particular, podría no mostrarse ningún aviso.
-- Hay mucho código repetido en model/db.py que podría ser refactorizado, pero elegí dejarlo así para que se entienda mejor cada definición.
+En esta entrega se incluye todo lo de la tarea 3 en la misma carpeta que la entrega anterior.
+La tarea 4 se encuentra incluida dentro del directorio tarea4 junto con todos los archivos necesarios. Esto
+es importante a tener en cuenta para poder ejecutar la tarea correctamente.
+Ademas, se asumio que la aplicacion web de springboot es completamente independiente de la de flask, por lo
+tanto para poder acceder a las dos apis se deben ejecutar ambos programas por separado.
+Es por esto que la aplicacion de SpringBoot solo contiene la funcionalidad pedida en el pdf, y nada mas que eso,
+pues se asume que lo demas es accesible a traves de otro puerto (el de la app web hecha con flask).
